@@ -1,0 +1,26 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!--div class="mdl-layout-title">
+        <img src="assets/logo.png">
+      </div!-->
+      <nav class="mdl-navigation">
+        <app-search (videosUpdated)="handleSearchVideo($event)" [loadingInProgress]="loadingInProgress">
+        </app-search>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content" LazyScroll (OnScrollMethod)="searchMore()" ScrollDistance="3">
+    <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
+      <app-video-list *ngIf="videoList.length" class="mdl-grid" [videoList]="videoList" [loadingInProgress]="loadingInProgress">
+      </app-video-list>
+    </div>
+  </main>
+</div>
+<div class="loader" *ngIf="!videoList.length && searched === true">
+  <div class="loading"></div>
+</div>
+
+
+

@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\shared",
+    "\\app\\shared\\directives",
+    "\\app\\shared\\services"
+  ],
+  "SelectedNode": "\\app\\shared\\services\\youtube.service.ts",
+  "PreviewInSolutionExplorer": false
+}
