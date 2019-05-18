@@ -21,7 +21,7 @@ export class YoutubeService {
   YOUTUBE_API_KEY = 'AIzaSyDbgWKYI-jbvwtyfolPMMHicORbH9xUyCY';
   public nextToken: string;
   public lastQuery: string;
-  maxResults = 50;
+  maxResults = 5;
 
 
   constructor(
