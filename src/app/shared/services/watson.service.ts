@@ -30,29 +30,29 @@ export class WatsonService {
   }
 
   analyzeCommentPromise(comment) {
-    var request = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
+
     return new Promise(function (resolve, reject) {
-      // Setup our listener to process compeleted requests
-      request.onreadystatechange = function () {
-
-        // Only run if the request is complete
-        if (request.readyState !== 4) return;
-
-        // Process the response
-        if (request.status >= 200 && request.status < 300) {
-          // If successful
-          resolve(request);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", 'http://localhost:3000/analyze', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function () {
+        if (this.status >= 200 && this.status < 300) {
+          resolve(xhr.response);
         } else {
-          // If failed
           reject({
-            status: request.status,
-            statusText: request.statusText
+            status: this.status,
+            statusText: xhr.statusText
           });
         }
-
       };
-      request.open("POST", 'http://localhost:3000/analyze', true);
-      request.send(JSON.stringify({ "text": comment }));
+      xhr.onerror = function () {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
+      };
+      xhr.send(JSON.stringify({ "text": comment }));
     });
   };
 }

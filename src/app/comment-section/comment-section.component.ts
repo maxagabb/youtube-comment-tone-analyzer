@@ -20,7 +20,12 @@ export class CommentSectionComponent implements OnInit {
 
   analyzeComment(comment: any, index): void {
     console.log("analyzing comment...");
-    this.watson.analyzeComment(comment);
+    var self = this;
+    this.watson.analyzeCommentPromise(comment)
+      .then(function (data) {
+        self.comments[index].snippet.topLevelComment.snippet.textDisplay = data;
+        console.log(data);
+    })
   }
 
 }
