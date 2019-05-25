@@ -6,7 +6,13 @@ var expressBrowserify = require('express-browserify'); // eslint-disable-line no
 var dotenv = require('dotenv');
 var AuthorizationV1 = require('ibm-watson/authorization/v1');
 var ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+const cors = require('cors');
+
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 
+};
 
 const toneAnalyzer = new ToneAnalyzerV3({
   iam_apikey: 'WATSON_API_KEY',
@@ -22,9 +28,10 @@ app.get(
     debug: isDev
   })
 );
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static('public/'));
+//app.use(express.static('public/'));
 
 app.post('/analyze', function(req, res, next) {
   //res.send('POST request to the homepage');

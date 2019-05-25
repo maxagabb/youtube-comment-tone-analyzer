@@ -9,7 +9,7 @@
         {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
       </span>
       <br>
-      <span innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"></span>
+      <span (click)="analyzeComment(thread.snippet.topLevelComment.snippet.textOriginal, i)" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"></span>
     </span>
   </span>
 </li>
