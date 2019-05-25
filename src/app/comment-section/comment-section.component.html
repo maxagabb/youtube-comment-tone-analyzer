@@ -1,3 +1,20 @@
-<p>
-  comment-section works!
-</p>
+<head>
+  <script src="jquery-3.4.0.min.js"></script>
+</head>
+<li class="mdl-list__item comment" id="{{i + thread.id}}" *ngFor="let thread of commentThreads; let i = index;" [ngClass]="{'last-item': i === commentThreads.length-1}">
+  <span class="mdl-list__item-primary-content">
+    <span>
+      <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i><br><br />
+      <span class="author">
+        {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
+      </span>
+      <br>
+      <span innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"></span>
+    </span>
+  </span>
+</li>
+
+<div class="loader loader-progress" *ngIf="loadingInProgress">
+  <div class="loading"></div>
+</div>
+

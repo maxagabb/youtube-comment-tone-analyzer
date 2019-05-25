@@ -5,7 +5,7 @@
   "angular-cli": {},
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "concurrently \"node server.js\" \"ng serve\"",
     "lint": "tslint \"src/**/*.ts\"",
     "gh-deploy": "ng build --prod && npx angular-cli-ghpages"
   },

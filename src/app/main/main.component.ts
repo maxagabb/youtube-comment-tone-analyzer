@@ -10,10 +10,12 @@ import { YoutubeService } from '../shared/services/youtube.service';
 
 export class MainComponent implements AfterViewInit {
   public videoList = [];
+  public commentList = [];
   public loadingInProgress = false;
   public repeat = false;
   public shuffle = false;
   private searched = false;
+  private comments = false;
   private pageLoadingFinished = false;
   public playlistElement: any;
 
@@ -26,8 +28,14 @@ export class MainComponent implements AfterViewInit {
   }
 
   handleSearchVideo(videos: Array<any>): void {
+    this.comments = false;
     this.searched = true;
     this.videoList = videos;
+  }
+  handleComments(comments: Array<any>): void {
+    console.log("comments in main", comments);
+    this.comments = true;
+    this.commentList = comments;
   }
   searchMore(): void {
     console.log("searchMore called")

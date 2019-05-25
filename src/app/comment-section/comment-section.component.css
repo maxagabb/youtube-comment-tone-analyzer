@@ -1,0 +1,11 @@
+.comment {
+  padding: 25px;
+
+}
+.author {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+br {
+  line-height: 5px;
+}

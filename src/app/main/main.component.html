@@ -1,9 +1,16 @@
+  <!-- Simple list -->
+<style>
+  .demo-list-item {
+    width: 1200px;
+  }
+
+  .demo-list-icon {
+    width: 300px;
+  }
+</style>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <!--div class="mdl-layout-title">
-        <img src="assets/logo.png">
-      </div!-->
       <nav class="mdl-navigation">
         <app-search (videosUpdated)="handleSearchVideo($event)" [loadingInProgress]="loadingInProgress">
         </app-search>
@@ -11,13 +18,25 @@
     </div>
   </header>
 
-  <main class="mdl-layout__content" LazyScroll (OnScrollMethod)="searchMore()" ScrollDistance="3">
+
+  <main *ngIf="comments === false" class="mdl-layout__content" LazyScroll (OnScrollMethod)="searchMore()" ScrollDistance="3">
     <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
-      <app-video-list *ngIf="videoList.length" class="mdl-grid" [videoList]="videoList" [loadingInProgress]="loadingInProgress">
+      <app-video-list (commentThreads)="handleComments($event)" *ngIf="videoList.length" class="mdl-grid" [videoList]="videoList" [loadingInProgress]="loadingInProgress">
       </app-video-list>
     </div>
   </main>
+
+
+  <main *ngIf="comments === true" class="mdl-layout__content">
+    <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
+      <ul>
+        <app-comment-section [commentThreads]="commentList" class="demo-list-item mdl-list">
+        </app-comment-section>
+      </ul>
+    </div>
+  </main>
 </div>
+
 <div class="loader" *ngIf="!videoList.length && searched === true">
   <div class="loading"></div>
 </div>
