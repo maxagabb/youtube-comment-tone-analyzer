@@ -63,6 +63,32 @@ export class MainComponent implements AfterViewInit {
         this.loadingInProgress = false;
       })
   }
+  getMoreComments(): void {
+    console.log("searchMore called")
+    if (this.loadingInProgress || this.pageLoadingFinished || this.videoList.length < 1) {
+      return;
+    }
+
+    this.loadingInProgress = true;
+    this.youtubeService.getMoreComments()
+      .then(data => {
+        this.loadingInProgress = false;
+        if (data.length < 1 || data.status === 400) {
+          setTimeout(() => {
+            this.pageLoadingFinished = true;
+            setTimeout(() => {
+              this.pageLoadingFinished = false;
+            }, 10000);
+          })
+          return;
+        }
+        data.forEach((val) => {
+          this.commentList.push(val);
+        });
+      }).catch(error => {
+        this.loadingInProgress = false;
+      })
+  }
 
 
 }

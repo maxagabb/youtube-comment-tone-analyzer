@@ -1,6 +1,9 @@
-.comment {
+.block {
   padding: 25px;
 
+}
+.comment {
+  margin-left: 40px;
 }
 .author {
   font-weight: bold;

@@ -7,6 +7,7 @@ import { WatsonService } from '../shared/services/watson.service'
 })
 export class CommentSectionComponent implements OnInit {
   @Input() commentThreads;
+  @Input() loadingInProgress;
   comments = [];
 
   constructor(private watson : WatsonService) { }

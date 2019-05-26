@@ -1,20 +1,21 @@
-<head>
-  <script src="jquery-3.4.0.min.js"></script>
-</head>
-<li class="mdl-list__item comment" id="{{i + thread.id}}" *ngFor="let thread of commentThreads; let i = index;" [ngClass]="{'last-item': i === commentThreads.length-1}">
-  <span class="mdl-list__item-primary-content">
-    <span>
-      <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i><br><br />
-      <span class="author">
-        {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
-      </span>
-      <br>
-      <span (click)="analyzeComment(thread.snippet.topLevelComment.snippet.textOriginal, i)" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"></span>
-    </span>
-  </span>
-</li>
-
-<div class="loader loader-progress" *ngIf="loadingInProgress">
-  <div class="loading"></div>
+<div>
+  <ul>
+    <li class="mdl-list__item block" id="{{i + thread.id}}" *ngFor="let thread of commentThreads; let i = index;" [ngClass]="{'last-item': i === commentThreads.length-1}">
+      <div class="mdl-list__item-primary-content">
+        <div>
+          <span class="author">
+            <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
+            {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
+          </span>
+          <br><br />
+          <p class="comment" (click)="analyzeComment(thread.snippet.topLevelComment.snippet.textOriginal, i)" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"></p>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
+
+  <div class="loader loader-progress" *ngIf="loadingInProgress">
+    <div class="loading"></div>
+  </div>
 

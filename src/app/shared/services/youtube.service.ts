@@ -21,6 +21,7 @@ export class YoutubeService {
   YOUTUBE_API_KEY = 'AIzaSyDbgWKYI-jbvwtyfolPMMHicORbH9xUyCY';
   public nextToken: string;
   public lastQuery: string;
+  public lastID: string;
   maxResults = 50;
 
 
@@ -30,52 +31,30 @@ export class YoutubeService {
     return this.http.get(url);
   }
 
- /* searchVideos(query: string): Promise<any> {
-    query = "akira";
-    const url = `${this.baseUrl}search?q=${query}&maxResults=${this.maxResults}&type=video&part=snippet,id&key=${this.YOUTUBE_API_KEY}&videoEmbeddable=true`;
-    var videos;
-    this.http.get(url)
-      .subscribe(response => {
-        let jsonRes = response;
-        let res = jsonRes['items'];
-        this.lastQuery = query;
-        this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
 
-        let ids = [];
-
-        res.forEach((item) => {
-          ids.push(item.id.videoId);
-        });
-
-        videos = this.getVideos(ids);
-        console.log(videos);
-      })
-
-    return videos;
-    //.toPromise()
-    //.catch(this.handleError)
-  }*/
-
-
-
-  /*getVideos(ids){
-    const url = `${this.baseUrl}videos?id=${ids.join(',')}&maxResults=${this.maxResults}&type=video&part=snippet,contentDetails,statistics&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
-    return this.http.get(url)
-      .toPromise(map(results => {
-        return results['items'];
-      }))
-      //.subscribe()
-      //.catch(this.handleError)
-  }*/
   getComments(id): Promise<any> {
     const url = `${this.baseUrl}commentThreads?part=snippet&videoId=${id}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
     return this.http.get(url)
       .toPromise()
-      //output: 'First Example'
       .then(results => {
-        //console.log('From Promise:', results);
+        let jsonRes = results;
+        this.lastID = id;
+        this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
         return results['items'];
       });
+  }
+  getMoreComments(): Promise<any> {
+    const url = `${this.baseUrl}commentThreads?part=snippet&pageToken=${this.nextToken}&videoId=${this.lastID}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
+    return this.http.get(url)
+      .toPromise()
+      .then(response => {
+        let jsonRes = response;
+        let res = jsonRes['items'];
+        this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
+        return jsonRes['items'];
+      })
+    //.toPromise()
+    //.catch(this.handleError)
   }
 
   getVideos(ids): Promise<any> {

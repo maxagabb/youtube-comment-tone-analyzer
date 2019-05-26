@@ -27,12 +27,10 @@
   </main>
 
 
-  <main *ngIf="comments === true" class="mdl-layout__content">
+  <main *ngIf="comments === true" class="mdl-layout__content" LazyScroll (OnScrollMethod)="getMoreComments()" ScrollDistance="3">
     <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
-      <ul>
-        <app-comment-section [commentThreads]="commentList" class="demo-list-item mdl-list">
+        <app-comment-section [commentThreads]="commentList" class="demo-list-item mdl-list" [loadingInProgress]="loadingInProgress">
         </app-comment-section>
-      </ul>
     </div>
   </main>
 </div>

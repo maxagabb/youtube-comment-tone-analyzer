@@ -3,10 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\comment-section",
     "\\src\\app\\shared",
-    "\\src\\app\\shared\\pipes",
-    "\\src\\app\\video-list"
+    "\\src\\app\\shared\\services"
   ],
-  "SelectedNode": "\\src\\app\\shared\\pipes\\video-duration.pipe.ts",
+  "SelectedNode": "\\src\\app\\shared\\services\\watson.service.ts",
   "PreviewInSolutionExplorer": false
 }

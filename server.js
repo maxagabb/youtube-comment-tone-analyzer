@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 const cors = require('cors');
 
 var corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:4200',
   optionsSuccessStatus: 200 
 };
 
@@ -34,7 +34,6 @@ app.use(bodyParser.json());
 //app.use(express.static('public/'));
 
 app.post('/analyze', function(req, res, next) {
-  //res.send('POST request to the homepage');
   const toneParams = {
     tone_input: { 'text': req.body.text },
     content_type: 'application/json',
@@ -48,7 +47,6 @@ app.post('/analyze', function(req, res, next) {
       res.end("finished request");
     }
   );
-
 });
 
 // optional: load environment properties from a .env file
@@ -75,7 +73,7 @@ app.get('/api/token/tone_analyzer', function(req, res) {
 
 var port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
 app.listen(port, function() {
-  console.log('Watson browserify example server running at http://localhost:%s/', port);
+  console.log('Watson request server running at http://localhost:%s/', port);
 });
 
 
