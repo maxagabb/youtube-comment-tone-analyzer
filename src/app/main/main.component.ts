@@ -33,12 +33,12 @@ export class MainComponent implements AfterViewInit {
     this.videoList = videos;
   }
   handleComments(comments: Array<any>): void {
-    console.log("comments in main", comments);
+    //console.log("comments in main", comments);
     this.comments = true;
     this.commentList = comments;
   }
   searchMore(): void {
-    console.log("searchMore called")
+    //console.log("searchMore called")
     if (this.loadingInProgress || this.pageLoadingFinished || this.videoList.length < 1) {
       return;
     }
@@ -64,7 +64,7 @@ export class MainComponent implements AfterViewInit {
       })
   }
   getMoreComments(): void {
-    console.log("searchMore called")
+    //console.log("searchMore called")
     if (this.loadingInProgress || this.pageLoadingFinished || this.videoList.length < 1) {
       return;
     }

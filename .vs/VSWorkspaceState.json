@@ -4,9 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\comment-section",
-    "\\src\\app\\shared",
     "\\src\\app\\shared\\services"
   ],
-  "SelectedNode": "\\src\\app\\shared\\services\\watson.service.ts",
+  "SelectedNode": "\\src\\app\\comment-section\\comment-section.component.css",
   "PreviewInSolutionExplorer": false
 }

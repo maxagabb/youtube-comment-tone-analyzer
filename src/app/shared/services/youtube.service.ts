@@ -33,7 +33,7 @@ export class YoutubeService {
 
 
   getComments(id): Promise<any> {
-    const url = `${this.baseUrl}commentThreads?part=snippet&videoId=${id}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
+    const url = `${this.baseUrl}commentThreads?part=snippet&order=relevance&videoId=${id}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
     return this.http.get(url)
       .toPromise()
       .then(results => {
@@ -44,7 +44,7 @@ export class YoutubeService {
       });
   }
   getMoreComments(): Promise<any> {
-    const url = `${this.baseUrl}commentThreads?part=snippet&pageToken=${this.nextToken}&videoId=${this.lastID}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
+    const url = `${this.baseUrl}commentThreads?part=snippet&order=relevance&pageToken=${this.nextToken}&videoId=${this.lastID}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
     return this.http.get(url)
       .toPromise()
       .then(response => {
@@ -114,82 +114,4 @@ export class YoutubeService {
       //.toPromise()
       //.catch(this.handleError)
   }
-
-
-
-
-
-  /*gapiClientConfig: NgGapiClientConfig = {
-    client_id: "460298885215-rlitofilod32q6sfcl5ln21p3pqcg93p.apps.googleusercontent.com",
-    discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
-    scope: [
-      "https://www.googleapis.com/auth/analytics.readonly",
-      "https://www.googleapis.com/auth/analytics"
-    ].join(" ")
-  };*/
-
-
 }
-
-/*
-export class RetrieverService {
-
-  constructor(gapiService: GoogleApiService) {
-    gapiService.onLoad().subscribe(() => {
-      // Here we can use gapi
-
-    });
-  }
-}*/
-
-
-
-
-
-
-/*
-export class Retriever {
-  //https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=projared&type=video
-  private videosURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10';
-  //Authorization: Bearer [YOUR_ACCESS_TOKEN]
-  //Accept: application/json
-
-  constructor(private http: HttpClient) { }
-
-  getVideoBySearch<Data>(term: string): Observable<Video> {
-    const url = `${this.videosURL}&q=${term}&type=video`;
-    return this.http.get<Video[]>(url)
-      .pipe(
-        map(videos => videos[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          //this.log(`${outcome} hero id=${id}`);
-        }),
-        catchError(this.handleError<Video>(`getVideo term=${term}`))
-      );
-  }
-
-
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-/*
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-}*/
-
