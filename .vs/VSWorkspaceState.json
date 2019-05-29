@@ -3,9 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\comment-section",
-    "\\src\\app\\shared\\services"
+    "\\src\\app\\comment-section"
   ],
-  "SelectedNode": "\\src\\app\\comment-section\\comment-section.component.css",
+  "SelectedNode": "\\src\\app\\comment-section\\comment-section.component.html",
   "PreviewInSolutionExplorer": false
 }
