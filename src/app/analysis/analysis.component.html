@@ -1,12 +1,11 @@
 <div>
-  <div class="">
     <div><b>Document Tones:</b></div>
     <span class="" id="{{i}}" *ngFor="let tone of documentTones; let i = index;">
       <span class="">
         {{tone.tone_name}}:{{tone.score}} ||
       </span>
     </span><br />
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table style =" table-layout: fixed;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
       <thead>
         <tr>
           <th></th>
@@ -16,24 +15,25 @@
       </thead>
       <tbody>
         <tr id="{{i}}" *ngFor="let sentence of sentenceTones; let i = index;">
-          <td data-label="View Sentence" class="mdl-data-table__cell--non-numeric">
-            <i (click)="showSentence[i] = true" class="material-icons">expand_more</i>
+          <td data-label="" class="mdl-data-table__cell--non-numeric cellButton" >
+            <button (click)="showSentence[i] = !showSentence[i]" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i class="material-icons">expand_more</i>
+            </button>
           </td>
           <td *ngIf="!showSentence[i]" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
             Sentence: {{i}}
           </td>
-          <td *ngIf="showSentence[i]" data-label="Text:" class="mdl-data-table__cell--non-numeric">
-            {{sentence.text}}
+          <td style = "max-width:400px;" *ngIf="showSentence[i]" class="mdl-data-table__cell--non-numeric sentenceCell">
+            <span class="sentence">{{sentence.text}}</span>
           </td>
           <ng-container *ngIf="sentence.tone_categories[0] !== undefined ">
             <ng-container *ngFor="let tone of sentence.tone_categories[0].tones; let i = index;">
                 <td [attr.data-label] = "tone.tone_name"  class="mdl-data-table__cell--non-numeric">
-                  {{tone.score}}
+                  <span [ngClass]="getClass(tone)">{{tone.score}}</span>
                 </td>
             </ng-container>
            </ng-container>
         </tr>
       </tbody>
     </table>
-  </div>
 </div>

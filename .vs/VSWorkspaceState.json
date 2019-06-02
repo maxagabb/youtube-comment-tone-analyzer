@@ -3,7 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\analysis"
+    "\\src\\app\\analysis",
+    "\\src\\app\\comment-section"
   ],
   "SelectedNode": "\\src\\app\\analysis\\analysis.component.ts",
   "PreviewInSolutionExplorer": false
