@@ -11,7 +11,8 @@ export class CommentSectionComponent implements OnInit {
   comments = [];
   isAnalyzed = [];
   isLoading = [];
-
+  isExpanded = [];
+  data;
   constructor(private watson : WatsonService) { }
   ngOnInit() {
     this.comments = this.commentThreads;
@@ -21,14 +22,31 @@ export class CommentSectionComponent implements OnInit {
   analyzeComment(comment: any, index): void {
     this.isAnalyzed[index] = true;
     this.isLoading[index] = true;
+    this.isLong[index] = false;
     console.log("analyzing comment...");
     var self = this;
     this.watson.analyzeCommentPromise(comment)
       .then(function (data) {
+        //self.comments[index].snippet.topLevelComment.snippet.textDisplay = data;
         self.isLoading[index] = false;
-        self.comments[index].snippet.topLevelComment.snippet.textDisplay = data;
+        self.data = data;
         //console.log(data);
     })
   }
 
+
+  changeComment(index) {
+    if (this.isExpanded[index] === true) {
+      this.isExpanded[index] = false;
+    }
+    else {
+      this.isExpanded[index] = true;
+    }
+  }
+  isLong(thread) {
+    var lines = thread.snippet.topLevelComment.snippet.textDisplay.split("br");
+    if (lines.length >= 5 || thread.snippet.topLevelComment.snippet.textDisplay.length > 600)
+      return true;
+    return false;
+  }
 }

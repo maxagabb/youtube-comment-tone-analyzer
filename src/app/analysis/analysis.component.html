@@ -1,0 +1,39 @@
+<div>
+  <div class="">
+    <div><b>Document Tones:</b></div>
+    <span class="" id="{{i}}" *ngFor="let tone of documentTones; let i = index;">
+      <span class="">
+        {{tone.tone_name}}:{{tone.score}} ||
+      </span>
+    </span><br />
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="mdl-data-table__cell--non-numeric">Sentences</th>
+          <th *ngFor="let tone of tones" class="mdl-data-table__cell--non-numeric">{{tone.tone_name}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="{{i}}" *ngFor="let sentence of sentenceTones; let i = index;">
+          <td data-label="View Sentence" class="mdl-data-table__cell--non-numeric">
+            <i (click)="showSentence[i] = true" class="material-icons">expand_more</i>
+          </td>
+          <td *ngIf="!showSentence[i]" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
+            Sentence: {{i}}
+          </td>
+          <td *ngIf="showSentence[i]" data-label="Text:" class="mdl-data-table__cell--non-numeric">
+            {{sentence.text}}
+          </td>
+          <ng-container *ngIf="sentence.tone_categories[0] !== undefined ">
+            <ng-container *ngFor="let tone of sentence.tone_categories[0].tones; let i = index;">
+                <td [attr.data-label] = "tone.tone_name"  class="mdl-data-table__cell--non-numeric">
+                  {{tone.score}}
+                </td>
+            </ng-container>
+           </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

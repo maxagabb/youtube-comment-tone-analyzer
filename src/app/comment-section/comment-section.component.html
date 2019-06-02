@@ -15,8 +15,9 @@
             <div class="loader" *ngIf="isLoading[i]"><div class="loading"></div></div>
           </div>
           <br>
-          <p class="comment" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"> </p>
-          <span class="astext">Read More</span><br><br>
+          <p *ngIf="!isAnalyzed[i]" id ="commentText" class="comment" [ngClass]="{'show-less': !isExpanded[i] && isLong(thread)}" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}"> </p>
+          <app-analysis *ngIf="!isLoading[i] && isAnalyzed[i]" [analysisJSON]="data"> </app-analysis>
+          <span *ngIf="!isAnalyzed[i] && isLong(thread)" id="readMoreButton" class="astext" (click)="changeComment(i)">{{ isExpanded[i] ? 'Show less': 'Read more' }}</span><br><br>
           <span style="float: left;">
             <i class="material-icons thumb">thumb_up</i>
             {{ thread.snippet.topLevelComment.snippet.likeCount | videoLikesViews}}

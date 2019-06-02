@@ -3,8 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\comment-section"
+    "\\src\\app\\analysis"
   ],
-  "SelectedNode": "\\src\\app\\comment-section\\comment-section.component.html",
+  "SelectedNode": "\\src\\app\\analysis\\analysis.component.ts",
   "PreviewInSolutionExplorer": false
 }

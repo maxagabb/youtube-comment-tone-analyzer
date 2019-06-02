@@ -2,6 +2,11 @@
   padding: 25px;
   margin-left: 160px;
 }
+.show-less {
+  height: 4rem;
+  overflow: hidden;
+  padding-bottom: 1rem;
+}
 @media (max-width: 768px) {
   .block {
     margin-left: auto;

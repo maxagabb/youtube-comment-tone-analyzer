@@ -16,6 +16,7 @@ import { VideoNamePipe } from './shared/pipes/video-name.pipe';
 import { MainComponent } from './main/main.component';
 import { LazyScrollDirective } from './shared/directives/lazy-scroll.directive';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CommentSectionComponent } from './comment-section/comment-section.compo
     VideoNamePipe,
     MainComponent,
     LazyScrollDirective,
-    CommentSectionComponent
+    CommentSectionComponent,
+    AnalysisComponent
   ],
   imports: [
     HttpClientModule,
