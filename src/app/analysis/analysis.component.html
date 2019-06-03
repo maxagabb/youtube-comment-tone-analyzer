@@ -5,7 +5,7 @@
         {{tone.tone_name}}:{{tone.score}} ||
       </span>
     </span><br />
-    <table style =" table-layout: fixed;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table *ngIf="sentenceTones!==undefined" style =" table-layout: fixed;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
       <thead>
         <tr>
           <th></th>
@@ -21,12 +21,12 @@
             </button>
           </td>
           <td *ngIf="!showSentence[i]" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
-            Sentence: {{i}}
+            {{i}}
           </td>
-          <td style = "max-width:400px;" *ngIf="showSentence[i]" class="mdl-data-table__cell--non-numeric sentenceCell">
+          <td *ngIf="showSentence[i]" class="mdl-data-table__cell--non-numeric sentenceCell">
             <span class="sentence">{{sentence.text}}</span>
           </td>
-          <ng-container *ngIf="sentence.tone_categories[0] !== undefined ">
+          <ng-container *ngIf="sentence.tone_categories[0] !== undefined">
             <ng-container *ngFor="let tone of sentence.tone_categories[0].tones; let i = index;">
                 <td [attr.data-label] = "tone.tone_name"  class="mdl-data-table__cell--non-numeric">
                   <span [ngClass]="getClass(tone)">{{tone.score}}</span>

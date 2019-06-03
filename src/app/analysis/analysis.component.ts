@@ -29,6 +29,7 @@ export class AnalysisComponent implements OnInit {
       'joyStrong': tone.tone_name === 'Joy' && tone.score >= .75,
       'fear': tone.tone_name === 'Fear' && tone.score >= .5,
       'sadness': tone.tone_name === 'Sadness' && tone.score >= .5,
+      'disgust': tone.tone_name === 'Disgust' && tone.score >= .5,
       'anger': tone.tone_name === 'Anger' && tone.score >= .5 && tone.score < .75,
       'angerStrong': tone.tone_name === 'Anger' && tone.score >= .75
     }

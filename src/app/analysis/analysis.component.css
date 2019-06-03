@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 45rem) {
   table, thead, tbody, th, td, tr {
     display: block;
   }
@@ -11,15 +11,16 @@
     height: auto;
   }
 
-  .mdl-data-table tbody tr:nth-child(even) {
-    background-color: #eee;
-  }
+    .mdl-data-table tbody tr:nth-child(even) {
+      background-color: #eee;
+    }
 
   .mdl-data-table td,
   .mdl-data-table td:first-of-type {
     padding-left: 50%;
   }
-      .mdl-data-table td:before {
+
+    .mdl-data-table td:before {
       position: absolute;
       top: 6px;
       left: 6px;
@@ -33,25 +34,34 @@
       font-family: Helvetica, Arial, sans-serif;
       font-size: 12px;
     }
+
     .mdl-data-table td:last-of-type {
       padding-right: 18px;
     }
 
-    .mdl-data-table td.sentenceCell{
+    .mdl-data-table td.sentenceCell {
+      max-width: 42rem;
       padding-left: 5%;
-      height:auto;
+      padding-right: 6px;
+      height: auto;
     }
+    .sentence{
+      max-width:42rem;
+    }
+
     .mdl-data-table td.cellButton {
       padding-left: 5%;
       height: auto;
     }
 }
 
-
+.sentenceCell {
+  max-width: 25rem;
+}
 
 .sentence {
   white-space: normal;
-  max-width: 200px;
+  max-width: 12.5rem;
   word-wrap: break-word;
 }
 .joy {
@@ -71,7 +81,8 @@
   padding: 0.2rem 0.3rem;
 }
 .disgust {
-  background-color: #69C3E2;
+  background-color: black;
+  color: white;
   padding: 0.2rem 0.3rem;
 }
 .anger {
