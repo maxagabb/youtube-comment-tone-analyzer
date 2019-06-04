@@ -71,7 +71,7 @@ app.get('/api/token/tone_analyzer', function(req, res) {
   });
 });
 
-var port = process.env.PORT || process.env.VCAP_APP_PORT || 3000;
+var port = process.env.PORT || process.env.VCAP_APP_PORT || 8080;
 app.listen(port, function() {
   console.log('Watson request server running at http://localhost:%s/', port);
 });
