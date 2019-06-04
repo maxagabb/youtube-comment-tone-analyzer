@@ -31,7 +31,7 @@ app.get(
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static('dist/'));
+app.use(express.static('src/'));
 
 
 app.post('/analyze', function(req, res, next) {
