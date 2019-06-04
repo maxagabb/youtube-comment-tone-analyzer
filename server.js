@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 const cors = require('cors');
 
 var corsOptions = {
-  origin: '*',
+  origin: 'https://youtube-tone-analyzer.herokuapp.com',
   optionsSuccessStatus: 200 
 };
 
