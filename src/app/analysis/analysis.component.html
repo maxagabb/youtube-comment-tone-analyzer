@@ -1,0 +1,41 @@
+
+    <div class="h3">Document-level</div>
+    <div class="documentList">
+      <ul style="display:inline-block">
+        <li id="documentTone" [ngClass]="getClass(tone)" style="display:inline-block" *ngFor="let tone of documentTones; let i = index;">
+          <i class="material-icons">mood</i>{{tone.tone_name}}:{{tone.score}}
+        </li>
+      </ul>
+    </div>
+    <br><br />
+    <table *ngIf="sentenceTones!==undefined" style =" table-layout: fixed;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="mdl-data-table__cell--non-numeric">Sentences</th>
+          <th *ngFor="let tone of tones" class="mdl-data-table__cell--non-numeric">{{tone.tone_name}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let sentence of sentenceTones; let i = index;">
+          <tr id="{{i}}" *ngIf="sentence.tone_categories[0] !== undefined" >
+              <td data-label="" class="mdl-data-table__cell--non-numeric cellButton">
+                <button (click)="sentence.showSentence = !sentence.showSentence" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">expand_more</i>
+                </button>
+              </td>
+              <td *ngIf="!sentence.showSentence" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
+                {{i}}
+              </td>
+              <td *ngIf="sentence.showSentence" class="mdl-data-table__cell--non-numeric sentenceCell">
+                <span class="sentence">{{sentence.text}}</span>
+              </td>
+              <ng-container *ngFor="let tone of sentence.tone_categories[0].tones; let i = index;">
+                <td [attr.data-label]="tone.tone_name" class="mdl-data-table__cell--non-numeric">
+                  <span [ngClass]="getClass(tone)">{{tone.score}}</span>
+                </td>
+              </ng-container>
+          </tr>
+        </ng-container>
+</tbody>
+    </table>

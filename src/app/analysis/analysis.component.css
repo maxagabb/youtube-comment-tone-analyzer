@@ -1,0 +1,113 @@
+@media only screen and (max-width: 45rem) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  .mdl-data-table tbody tr {
+    height: auto;
+  }
+
+    .mdl-data-table tbody tr:nth-child(even) {
+      background-color: #eee;
+    }
+
+  .mdl-data-table td,
+  .mdl-data-table td:first-of-type {
+    padding-left: 50%;
+  }
+
+    .mdl-data-table td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding: 6px 18px 0;
+      white-space: nowrap;
+      content: attr(data-label);
+      text-align: left;
+      color: rgba(0, 0, 0, 0.541176);
+      font-weight: bold;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .mdl-data-table td:last-of-type {
+      padding-right: 18px;
+    }
+
+    .mdl-data-table td.sentenceCell {
+      max-width: 42rem;
+      padding-left: 5%;
+      padding-right: 6px;
+      height: auto;
+    }
+    .sentence{
+      max-width:42rem;
+    }
+
+    .mdl-data-table td.cellButton {
+      padding-left: 5%;
+      height: auto;
+    }
+}
+
+.sentenceCell {
+  max-width: 25rem;
+}
+
+.sentence {
+  white-space: normal;
+  max-width: 12.5rem;
+  word-wrap: break-word;
+}
+.joy {
+  background-color: #FFF173;
+  padding: 0.2rem 0.3rem;
+}
+.joyStrong {
+  background-color: #FFD629;
+  padding: 0.2rem 0.3rem;
+}
+.fear {
+  background-color: #7DB258;
+  padding: 0.2rem 0.3rem;
+}
+.sadness {
+  background-color: #69C3E2;
+  padding: 0.2rem 0.3rem;
+}
+.disgust {
+  background-color: black;
+  color: white;
+  padding: 0.2rem 0.3rem;
+}
+.anger {
+  background-color: #FFA197;
+  padding: 0.2rem 0.3rem;
+}
+.angerStrong {
+  background-color: #E80521;
+  color: white;
+  padding: 0.2rem 0.3rem;
+}
+.documentTone {
+  white-space:nowrap;
+}
+#documentTone {
+  padding: 0.625rem;
+}
+.documentList {
+  width: 100%;
+  background-color:#edefff;
+}
+.h3 {
+  padding-left:1rem;
+  padding-bottom:.5rem;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  color: #323232;
+}

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "angular-cli": {},
+  "main": "server.js",
   "scripts": {
-    "start": "ng serve",
+    "start": "concurrently \"node server.js\" \"ng serve\"",
     "lint": "tslint \"src/**/*.ts\"",
     "gh-deploy": "ng build --prod && npx angular-cli-ghpages"
   },
@@ -23,6 +24,12 @@
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
     "core-js": "^2.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-browserify": "^1.0.2",
+    "ibm-watson": "latest",
+    "material-components-web": "^2.3.0",
     "material-design-lite": "^1.3.0",
     "rxjs": "^6.3.0",
     "rxjs-compat": "^6.3.3",
@@ -30,7 +37,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular-devkit/build-angular": "^0.10.0",
     "@angular/cli": "^7.0.0",
     "@angular/compiler-cli": "^7.0.0",
     "@types/node": "^10.0.50",
@@ -40,5 +47,8 @@
     "tslint": "^5.8.0",
     "typescript": "~3.1.1",
     "webpack": "^4.31.0"
+  },
+  "engines": {
+    "node": ">=6"
   }
 }

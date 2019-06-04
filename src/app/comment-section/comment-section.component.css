@@ -1,0 +1,56 @@
+.block {
+  padding: 25px;
+  margin-left: 160px;
+}
+.show-less {
+  height: 4rem;
+  overflow: hidden;
+  padding-bottom: 1rem;
+}
+@media (max-width: 868px) {
+  .block {
+    margin-left: auto;
+  }
+}
+.thumb {
+  color: #3ea6ff;
+}
+.astext {
+  font-weight: bold;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 40px;
+  float:left;
+}
+
+.tone {
+  margin-right: 25px;
+}
+
+.comment {
+  margin-left: 40px;
+  word-wrap: break-word;
+}
+
+.author {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.commentHeader {
+  white-space:nowrap;
+}
+
+.loader {
+  position: relative;
+}
+
+.thumb {
+  margin-left: 40px;
+}
+
+br {
+  line-height: 5px;
+}

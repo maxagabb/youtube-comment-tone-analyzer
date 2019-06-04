@@ -1,0 +1,39 @@
+<div>
+  <ul class="demo-list-item mdl-list">
+    <li class="mdl-list__item block" id="{{i + thread.id}}" *ngFor="let thread of commentThreads; let i = index;" [ngClass]="{'last-item': i === commentThreads.length-1}">
+      <div class="mdl-list__item-primary-content">
+        <div>
+          <div class="commentHeader">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored tone"
+                    (click)="analyzeComment(thread)" [disabled]="thread.isAnalyzed">
+              <i class="material-icons">sentiment_satisfied</i>
+            </button>
+            <span class="author">
+              <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
+              {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
+            </span>
+            <div class="loader" *ngIf="thread.isLoading"><div class="loading"></div></div>
+          </div>
+          <br>
+          <app-analysis *ngIf="!thread.isLoading && thread.isAnalyzed" [analysisJSON]="data"></app-analysis>
+          <p *ngIf="!thread.isAnalyzed || !thread.hasSentenceTones" id="commentText" class="comment"
+             [ngClass]="{'show-less': !thread.isExpanded && isLong(thread)}" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}">
+          </p>
+          <span *ngIf="!thread.isAnalyzed && isLong(thread)" id="readMoreButton" class="astext"
+                (click)="toggleComment(thread)">
+            {{ thread.isExpanded ? 'Show less': 'Read more' }}
+          </span><br><br>
+          <span style="float: left;">
+            <i class="material-icons thumb">thumb_up</i>
+            {{ thread.snippet.topLevelComment.snippet.likeCount | videoLikesViews}}
+          </span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="loader loader-progress" *ngIf="loadingInProgress">
+  <div class="loading"></div>
+</div>
+

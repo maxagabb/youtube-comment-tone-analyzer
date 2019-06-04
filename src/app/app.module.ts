@@ -15,6 +15,8 @@ import { VideoLikesViewsPipe } from './shared/pipes/video-likes-views.pipe';
 import { VideoNamePipe } from './shared/pipes/video-name.pipe';
 import { MainComponent } from './main/main.component';
 import { LazyScrollDirective } from './shared/directives/lazy-scroll.directive';
+import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LazyScrollDirective } from './shared/directives/lazy-scroll.directive';
     VideoLikesViewsPipe,
     VideoNamePipe,
     MainComponent,
-    LazyScrollDirective
+    LazyScrollDirective,
+    CommentSectionComponent,
+    AnalysisComponent
   ],
   imports: [
     HttpClientModule,
