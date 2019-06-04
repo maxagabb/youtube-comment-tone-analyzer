@@ -9,39 +9,35 @@ export class CommentSectionComponent implements OnInit {
   @Input() commentThreads;
   @Input() loadingInProgress;
   comments = [];
-  isAnalyzed = [];
-  isLoading = [];
-  isExpanded = [];
   data;
-  constructor(private watson : WatsonService) { }
+  constructor(private watson: WatsonService) { }
   ngOnInit() {
     this.comments = this.commentThreads;
     //console.log("comments in commentComponent", this.comments);
   }
 
-  analyzeComment(comment: any, index): void {
-    this.isAnalyzed[index] = true;
-    this.isLoading[index] = true;
-    this.isLong[index] = false;
+  analyzeComment(comment: any): void {
+    var text = comment.snippet.topLevelComment.snippet.textOriginal;
+    comment.hasSentenceTones = true;
+    comment.isAnalyzed = true;
+    comment.isLoading = true;
+    comment.isLong = false;
     console.log("analyzing comment...");
     var self = this;
-    this.watson.analyzeCommentPromise(comment)
+    this.watson.analyzeCommentPromise(text)
       .then(function (data) {
         //self.comments[index].snippet.topLevelComment.snippet.textDisplay = data;
-        self.isLoading[index] = false;
+        comment.isLoading = false;
         self.data = data;
-        //console.log(data);
-    })
+        var analysis = JSON.parse(self.data);
+        if (analysis.sentences_tone === undefined)
+          comment.hasSentenceTones = false;
+      })
   }
 
 
-  changeComment(index) {
-    if (this.isExpanded[index] === true) {
-      this.isExpanded[index] = false;
-    }
-    else {
-      this.isExpanded[index] = true;
-    }
+  toggleComment(comment) {
+    comment.isExpanded = !comment.isExpanded;
   }
   isLong(thread) {
     var lines = thread.snippet.topLevelComment.snippet.textDisplay.split("br");

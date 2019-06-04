@@ -94,3 +94,20 @@
   color: white;
   padding: 0.2rem 0.3rem;
 }
+.documentTone {
+  white-space:nowrap;
+}
+#documentTone {
+  padding: 0.625rem;
+}
+.documentList {
+  width: 100%;
+  background-color:#edefff;
+}
+.h3 {
+  padding-left:1rem;
+  padding-bottom:.5rem;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  color: #323232;
+}

@@ -3,9 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\analysis",
-    "\\src\\app\\comment-section"
+    "\\src\\app\\main"
   ],
-  "SelectedNode": "\\src\\app\\analysis\\analysis.component.ts",
+  "SelectedNode": "\\server.js",
   "PreviewInSolutionExplorer": false
 }

@@ -14,8 +14,8 @@ export class MainComponent implements AfterViewInit {
   public loadingInProgress = false;
   public repeat = false;
   public shuffle = false;
-  private searched = false;
-  private comments = false;
+  public searched = false;
+  public comments = false;
   private pageLoadingFinished = false;
   public playlistElement: any;
 
