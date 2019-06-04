@@ -13,11 +13,6 @@ const routes: Routes = [
     redirectTo: '/videos',
     pathMatch: 'full'
   },
-  {
-    path: '/',
-    redirectTo: '/videos',
-    pathMatch: 'full'
-  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
