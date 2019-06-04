@@ -51,6 +51,8 @@
     "ts-node": "^4.0.0",
     "tslint": "^5.8.0",
     "typescript": "~3.1.1",
-    "webpack": "^4.31.0"
+    "webpack": "^4.31.0",
+    "@angular/cli": "^7.0.0",
+    "@angular/compiler-cli": "^7.0.0"
   }
 }
