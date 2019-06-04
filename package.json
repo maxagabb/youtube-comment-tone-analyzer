@@ -7,12 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "lint": "tslint \"src/**/*.ts\"",
-    "gh-deploy": "ng build --prod && npx angular-cli-ghpages",
-    "postinstall": "ng build --aot -prod"
-  },
-  "engines": {
-    "node": "10.15.3",
-    "npm": "6.9.0"
+    "gh-deploy": "ng build --prod && npx angular-cli-ghpages"
   },
   "repository": {
     "type": "git",
@@ -43,14 +38,19 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.10.0",
+    "@angular/cli": "^7.0.0",
+    "@angular/compiler-cli": "^7.0.0",
     "@types/node": "^10.0.50",
     "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "^4.5.0",
     "ts-node": "^4.0.0",
     "tslint": "^5.8.0",
     "typescript": "~3.1.1",
-    "webpack": "^4.31.0",
-    "@angular/cli": "^7.0.0",
-    "@angular/compiler-cli": "^7.0.0"
+    "webpack": "^4.31.0"
+  },
+  "postinstall": "ng build --aot -prod",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.9.0"
   }
 }
