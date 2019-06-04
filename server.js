@@ -31,13 +31,7 @@ app.get(
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
-app.get('*', function (req, res) {
-  // WRONG: res.sendFile(path.join(__dirname + '/client/dist/index.html'));
-
-  // Correct!
-  res.sendFile(path.join(__dirname, './dist/index.html'));
-});
+app.use(express.static('dist/'));
 
 app.post('/analyze', function(req, res, next) {
   const toneParams = {
