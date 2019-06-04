@@ -31,10 +31,7 @@ app.get(
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.get('*', (_req, res) => {
-  console.log("base href");
-  res.sendFile('dist/');
-});
+app.use(express.static('dist/'));
 
 app.post('/analyze', function(req, res, next) {
   const toneParams = {
