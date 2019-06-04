@@ -32,7 +32,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, '.dist/index.html'));
 });
 
 app.post('/analyze', function(req, res, next) {
