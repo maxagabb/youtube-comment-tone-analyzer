@@ -31,7 +31,7 @@ app.get(
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static('src/'));
+app.use(express.static('src/index.html'));
 
 app.post('/analyze', function(req, res, next) {
   const toneParams = {
