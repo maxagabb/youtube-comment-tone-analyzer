@@ -32,6 +32,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.get('*', (_req, res) => {
+  console.log("base href");
   res.sendFile(path.join(__dirname, '.dist/index.html'));
 });
 
