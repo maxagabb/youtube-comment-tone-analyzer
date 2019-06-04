@@ -5,15 +5,7 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
 
 
-const routes: Routes = [
-  { path: 'videos', component: VideoListComponent },
-  { path: 'comments', component: CommentSectionComponent },
-  {
-    path: '',
-    redirectTo: '/videos',
-    pathMatch: 'full'
-  },
-];
+const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
