@@ -100,8 +100,7 @@
 }
 #documentListItem {
   padding: 0.625rem;
-  display: table-cell;
-  text-align: center;
+  display: inline-block;
 }
 .documentList {
   width: 100%;
