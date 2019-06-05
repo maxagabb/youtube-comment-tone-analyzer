@@ -98,7 +98,10 @@
   white-space:nowrap;
 }
 #documentTone {
+  width:3rem;
+  text-overflow:ellipsis;
   padding: 0.625rem;
+  display: inline-block;
 }
 .documentList {
   width: 100%;

@@ -2,7 +2,7 @@
     <div class="h3">Document-level</div>
     <div class="documentList">
       <ul style="display:inline-block">
-        <li id="documentTone" [ngClass]="getClass(tone)" style="display:inline-block" *ngFor="let tone of documentTones; let i = index;">
+        <li id="documentTone" [ngClass]="getClass(tone)" *ngFor="let tone of documentTones; let i = index;">
           <i class="material-icons">mood</i>{{tone.tone_name}}:{{tone.score}}
         </li>
       </ul>
