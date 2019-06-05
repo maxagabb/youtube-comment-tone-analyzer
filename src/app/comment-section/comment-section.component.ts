@@ -11,28 +11,29 @@ export class CommentSectionComponent implements OnInit {
   comments = [];
   data;
   constructor(private watson: WatsonService) { }
-  ngOnInit() {
-    this.comments = this.commentThreads;
-    //console.log("comments in commentComponent", this.comments);
-  }
+  ngOnInit() {this.comments = this.commentThreads;}
 
   analyzeComment(comment: any): void {
-    var text = comment.snippet.topLevelComment.snippet.textOriginal;
-    comment.hasSentenceTones = true;
-    comment.isAnalyzed = true;
-    comment.isLoading = true;
-    comment.isLong = false;
-    console.log("analyzing comment...");
-    var self = this;
-    this.watson.analyzeCommentPromise(text)
-      .then(function (data) {
-        //self.comments[index].snippet.topLevelComment.snippet.textDisplay = data;
-        comment.isLoading = false;
-        self.data = data;
-        var analysis = JSON.parse(self.data);
-        if (analysis.sentences_tone === undefined)
-          comment.hasSentenceTones = false;
-      })
+    if (!comment.isAnalyzed) {
+      var text = comment.snippet.topLevelComment.snippet.textOriginal;
+
+      comment.hasSentenceTones = true;  comment.isAnalyzed = true;
+      comment.isLoading = true; comment.isLong = false;
+      comment.showAnalysis = true;
+      var self = this;
+
+      this.watson.analyzeCommentPromise(text)
+        .then(function (data) {
+          comment.isLoading = false;
+          self.data = data;
+          var analysis = JSON.parse(self.data);
+          if (analysis.sentences_tone === undefined)
+            comment.hasSentenceTones = false;
+        })
+    }
+    else {
+      comment.showAnalysis = !comment.showAnalysis;
+    }
   }
 
 

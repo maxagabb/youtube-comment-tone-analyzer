@@ -5,8 +5,8 @@
         <div>
           <div class="commentHeader">
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored tone"
-                    (click)="analyzeComment(thread)" [disabled]="thread.isAnalyzed">
-              <i class="material-icons">sentiment_satisfied</i>
+                    (click)="analyzeComment(thread)">
+              <i class="material-icons">build</i>
             </button>
             <span class="author">
               <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
@@ -15,8 +15,8 @@
             <div class="loader" *ngIf="thread.isLoading"><div class="loading"></div></div>
           </div>
           <br>
-          <app-analysis *ngIf="!thread.isLoading && thread.isAnalyzed" [analysisJSON]="data"></app-analysis>
-          <p *ngIf="!thread.isAnalyzed || !thread.hasSentenceTones" id="commentText" class="comment"
+          <app-analysis *ngIf="!thread.isLoading && thread.isAnalyzed && thread.showAnalysis" [analysisJSON]="data"></app-analysis>
+          <p *ngIf="!thread.isAnalyzed || !thread.hasSentenceTones || !thread.showAnalysis" id="commentText" class="comment"
              [ngClass]="{'show-less': !thread.isExpanded && isLong(thread)}" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}">
           </p>
           <span *ngIf="!thread.isAnalyzed && isLong(thread)" id="readMoreButton" class="astext"
