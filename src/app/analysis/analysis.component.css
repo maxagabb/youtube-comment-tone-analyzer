@@ -98,6 +98,7 @@
   white-space:nowrap;
 }
 #documentTone {
+  vertical-align: middle;
   padding: 0.625rem;
   display: inline-block;
 }
