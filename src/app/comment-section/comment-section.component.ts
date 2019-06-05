@@ -19,6 +19,7 @@ export class CommentSectionComponent implements OnInit {
       var text = comment.snippet.topLevelComment.snippet.textOriginal;
       comment.hasSentenceTones = true;  comment.isAnalyzed = true;
       comment.isLoading = true; comment.isLong = false;
+      comment.showAnalysis = true;
 
       this.watson.analyzeCommentPromise(text)
         .then(function (data) {
@@ -27,7 +28,6 @@ export class CommentSectionComponent implements OnInit {
           if (analysis.sentences_tone === undefined)
             comment.hasSentenceTones = false;
           comment.isLoading = false;
-          comment.showAnalysis = true;
         })
     }
     else {
