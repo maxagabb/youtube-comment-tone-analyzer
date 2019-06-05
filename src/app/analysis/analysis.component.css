@@ -95,10 +95,10 @@
   padding: 0.2rem 0.3rem;
 }
 .documentTone {
-  white-space:nowrap;
+  vertical-align:middle;
+  display:inline-flex;
 }
-#documentTone {
-  vertical-align: middle;
+#documentListItem {
   padding: 0.625rem;
   display: inline-block;
 }
