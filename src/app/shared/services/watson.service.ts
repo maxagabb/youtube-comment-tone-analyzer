@@ -10,7 +10,7 @@ export class WatsonService {
 
   analyzeComment(comment) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'wss://youtube-tone-analyzer.herokuapp.com/', true);
+    xhr.open("POST", `http://localhost:${process.env.PORT}/analyze`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function (e) {
       if (xhr.readyState === 4) {
@@ -34,7 +34,7 @@ export class WatsonService {
 
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", 'wss://youtube-tone-analyzer.herokuapp.com/', true);
+      xhr.open("POST", `http://localhost:${process.env.PORT}/analyze`, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onload = function () {
         if (this.status >= 200 && this.status < 300) {
