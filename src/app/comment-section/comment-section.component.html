@@ -15,11 +15,11 @@
             <div class="loader" *ngIf="thread.isLoading"><div class="loading"></div></div>
           </div>
           <br>
-          <app-analysis *ngIf="!thread.isLoading && thread.isAnalyzed && thread.showAnalysis" [analysisJSON]="data"></app-analysis>
-          <p *ngIf="!thread.isAnalyzed || !thread.hasSentenceTones || !thread.showAnalysis" id="commentText" class="comment"
+          <app-analysis *ngIf="!thread.isLoading && thread.showAnalysis" [analysisJSON]="data"></app-analysis>
+          <p *ngIf= "!thread.hasSentenceTones || !thread.showAnalysis" id="commentText" class="comment"
              [ngClass]="{'show-less': !thread.isExpanded && isLong(thread)}" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}">
           </p>
-          <span *ngIf="!thread.isAnalyzed && isLong(thread)" id="readMoreButton" class="astext"
+          <span *ngIf="!thread.showAnalysis && isLong(thread)" id="readMoreButton" class="astext"
                 (click)="toggleComment(thread)">
             {{ thread.isExpanded ? 'Show less': 'Read more' }}
           </span><br><br>
