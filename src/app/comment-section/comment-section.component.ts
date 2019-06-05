@@ -15,20 +15,19 @@ export class CommentSectionComponent implements OnInit {
 
   analyzeComment(comment: any): void {
     if (!comment.isAnalyzed) {
-      var text = comment.snippet.topLevelComment.snippet.textOriginal;
 
+      var text = comment.snippet.topLevelComment.snippet.textOriginal;
       comment.hasSentenceTones = true;  comment.isAnalyzed = true;
       comment.isLoading = true; comment.isLong = false;
-      comment.showAnalysis = true;
-      var self = this;
 
       this.watson.analyzeCommentPromise(text)
         .then(function (data) {
-          comment.isLoading = false;
-          self.data = data;
-          var analysis = JSON.parse(self.data);
+          comment.data = data;
+          var analysis = JSON.parse(comment.data);
           if (analysis.sentences_tone === undefined)
             comment.hasSentenceTones = false;
+          comment.isLoading = false;
+          comment.showAnalysis = true;
         })
     }
     else {
