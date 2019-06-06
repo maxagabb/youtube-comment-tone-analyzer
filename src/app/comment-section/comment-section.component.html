@@ -12,7 +12,7 @@
               <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
               {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
             </span>
-            <div class="loader" *ngIf="thread.isLoading && !thread.showAnalysis"><div class="loading"></div></div>
+            <div class="loader" *ngIf="thread.isLoading && thread.showAnalysis"><div class="loading"></div></div>
           </div>
           <br>
           <app-analysis *ngIf="!thread.isLoading && thread.showAnalysis" [analysisJSON]="thread.data"></app-analysis>
