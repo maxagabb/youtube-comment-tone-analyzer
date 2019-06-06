@@ -4,17 +4,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-//import { Video } from './video';
-//import { Promise } from 'q';
 import 'rxjs/add/operator/toPromise';
-//import { GoogleAuthService, GoogleApiService, NgGapiClientConfig, GoogleApiModule, NG_GAPI_CONFIG } from '../../node_modules/ng-gapi'
-//import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
 })
-
-
 
 export class YoutubeService {
   baseUrl = 'https://www.googleapis.com/youtube/v3/';

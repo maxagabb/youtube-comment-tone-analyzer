@@ -53,8 +53,6 @@ app.post('/analyze', function(req, res, next) {
 
 // For local development, specify the username and password or set env properties
 var ltAuthService = new AuthorizationV1({
-  //username: process.env.TONE_ANALYZER_USERNAME || 'username',
-  //password: process.env.TONE_ANALYZER_PASSWORD || 'password',
   iam_apikey: process.env.WATSON_KEY,
   url: ToneAnalyzerV3.URL,
   version:  '2016-05-19',
@@ -69,6 +67,7 @@ app.get('/api/token/tone_analyzer', function(req, res) {
     res.send(token);
   });
 });
+
 
 var port = process.env.PORT || process.env.VCAP_APP_PORT || 8080;
 app.listen(port, function() {
