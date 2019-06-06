@@ -2,7 +2,6 @@
 'use strict';
 var express = require('express'); // eslint-disable-line node/no-missing-require
 var app = express();
-var expressBrowserify = require('express-browserify'); // eslint-disable-line node/no-missing-require
 var dotenv = require('dotenv');
 var AuthorizationV1 = require('ibm-watson/authorization/v1');
 var ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
@@ -22,14 +21,6 @@ const toneAnalyzer = new ToneAnalyzerV3({
   version:  '2016-05-19',
 });
 
-var isDev = app.get('env') === 'development';
-app.get(
-  '/bundle.js',
-  expressBrowserify('public/client.js', {
-    watch: isDev,
-    debug: isDev
-  })
-);
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
