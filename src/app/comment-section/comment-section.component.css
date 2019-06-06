@@ -40,7 +40,7 @@
   margin-bottom: 10px;
 }
 .commentHeader {
-  white-space:nowrap;
+  white-space: nowrap;
 }
 
 .loader {
@@ -51,6 +51,13 @@
   margin-left: 40px;
 }
 
-br {
-  line-height: 5px;
+.mdl-switch{
+  padding-right:2rem;
+  width:auto;
+}
+.mdl-progress {
+  margin-top: 2.5rem;
+  margin-left: 3.5rem;
+  width:60vw;
+  max-width:30rem;
 }

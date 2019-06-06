@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WatsonService } from '../shared/services/watson.service'
+declare var componentHandler: any;
 @Component({
   selector: 'app-comment-section',
   templateUrl: './comment-section.component.html',
@@ -11,11 +12,14 @@ export class CommentSectionComponent implements OnInit {
   comments = [];
   data;
   constructor(private watson: WatsonService) { }
-  ngOnInit() {this.comments = this.commentThreads;}
-
+  ngOnInit() {
+    this.comments = this.commentThreads;
+  }
+  ngAfterViewChecked() {
+    componentHandler.upgradeAllRegistered();
+  }
   analyzeComment(comment: any): void {
     if (!comment.isAnalyzed) {
-
       var text = comment.snippet.topLevelComment.snippet.textOriginal;
       comment.hasSentenceTones = true;  comment.isAnalyzed = true;
       comment.isLoading = true; comment.isLong = false;

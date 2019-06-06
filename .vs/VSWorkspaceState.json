@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\comment-section",
     "\\src\\app\\search"
   ],
-  "SelectedNode": "\\src\\app\\search\\search.component.css",
+  "SelectedNode": "\\src\\app\\comment-section\\comment-section.component.ts",
   "PreviewInSolutionExplorer": false
 }

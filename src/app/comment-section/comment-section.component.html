@@ -4,16 +4,16 @@
       <div class="mdl-list__item-primary-content">
         <div>
           <div class="commentHeader">
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored tone"
-                    (click)="analyzeComment(thread)">
-              <i class="material-icons">build</i>
-            </button>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+              <input (change)="analyzeComment(thread)" type="checkbox" id="switch-2" class="mdl-switch__input">
+              <span class="mdl-switch__label"></span>
+            </label>
             <span class="author">
               <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
               {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
             </span>
-            <div class="loader" *ngIf="thread.isLoading && thread.showAnalysis"><div class="loading"></div></div>
           </div>
+          <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" *ngIf="thread.isLoading && thread.showAnalysis"></div>
           <br>
           <app-analysis *ngIf="!thread.isLoading && thread.showAnalysis" [analysisJSON]="thread.data"></app-analysis>
           <p *ngIf= "!thread.hasSentenceTones || !thread.showAnalysis" id="commentText" class="comment"
