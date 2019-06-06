@@ -113,3 +113,7 @@
   font-weight: 400;
   color: #323232;
 }
+.mdl-data-table {
+  table-layout: fixed;
+  margin-bottom:1rem;
+}
