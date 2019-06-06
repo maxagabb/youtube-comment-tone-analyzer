@@ -8,6 +8,8 @@ var AuthorizationV1 = require('ibm-watson/authorization/v1');
 var ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 var bodyParser = require('body-parser');
 const cors = require('cors');
+// optional: load environment properties from a .env file
+dotenv.load({ silent: true });
 
 var corsOptions = {
   origin: 'https://youtube-tone-analyzer.herokuapp.com',
@@ -15,7 +17,7 @@ var corsOptions = {
 };
 
 const toneAnalyzer = new ToneAnalyzerV3({
-  iam_apikey: 'WATSON_API_KEY',
+  iam_apikey: process.env.WATSON_KEY,
   url:      'https://gateway.watsonplatform.net/tone-analyzer/api',
   version:  '2016-05-19',
 });
@@ -49,14 +51,11 @@ app.post('/analyze', function(req, res, next) {
   );
 });
 
-// optional: load environment properties from a .env file
-dotenv.load({ silent: true });
-
 // For local development, specify the username and password or set env properties
 var ltAuthService = new AuthorizationV1({
   //username: process.env.TONE_ANALYZER_USERNAME || 'username',
   //password: process.env.TONE_ANALYZER_PASSWORD || 'password',
-  iam_apikey: 'WATSON_API_KEY',
+  iam_apikey: process.env.WATSON_KEY,
   url: ToneAnalyzerV3.URL,
   version:  '2016-05-19',
 });
