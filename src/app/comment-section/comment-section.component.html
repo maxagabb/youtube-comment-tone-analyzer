@@ -19,10 +19,12 @@
           <p *ngIf= "!thread.hasSentenceTones || !thread.showAnalysis" id="commentText" class="comment"
              [ngClass]="{'show-less': !thread.isExpanded && isLong(thread)}" innerHTML="{{ thread.snippet.topLevelComment.snippet.textDisplay }}">
           </p>
-          <span *ngIf="!thread.showAnalysis && isLong(thread)" id="readMoreButton" class="astext"
-                (click)="toggleComment(thread)">
-            {{ thread.isExpanded ? 'Show less': 'Read more' }}
-          </span><br><br>
+          <span *ngIf="!thread.showAnalysis && isLong(thread)">
+            <span  id="readMoreButton" class="astext"
+                  (click)="toggleComment(thread)">
+              {{ thread.isExpanded ? 'Show less': 'Read more' }}
+            </span><br><br>
+          </span>
           <span style="float: left;">
             <i class="material-icons thumb">thumb_up</i>
             {{ thread.snippet.topLevelComment.snippet.likeCount | videoLikesViews}}
