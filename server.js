@@ -42,24 +42,6 @@ app.post('/analyze', function(req, res, next) {
   );
 });
 
-// For local development, specify the username and password or set env properties
-var ltAuthService = new AuthorizationV1({
-  iam_apikey: process.env.WATSON_KEY,
-  url: ToneAnalyzerV3.URL,
-  version:  '2016-05-19',
-});
-
-app.get('/api/token/tone_analyzer', function(req, res) {
-  ltAuthService.getToken(function(err, token) {
-    if (err) {
-      console.log('Error retrieving token: ', err);
-      return res.status(500).send('Error retrieving token');
-    }
-    res.send(token);
-  });
-});
-
-
 var port = process.env.PORT || process.env.VCAP_APP_PORT || 8080;
 app.listen(port, function() {
   console.log('Watson request server running at http://localhost:%s/', port);
