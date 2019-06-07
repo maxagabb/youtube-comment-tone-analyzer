@@ -7,19 +7,20 @@ to display the emotional analysis of that comment.
 Parts of this project were derived from the [ngx-YouTube-Player](https://github.com/SamirHodzic/ngx-youtube-player).
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
-##Credentials 
+## Credentials 
 
 Youtube API-key can be specified in the youtube.service.ts file.
-The Tone-Analyzer API-key is specified in server.js; env variables should be used for local development. 
+The Tone-Analyzer API-key is specified in server.js. 
+env variables can be used for deploying locally. 
 
-##Routes
+## Routes
 
 XMLHttpRequest route in watson.service.ts needs to be edited when running locally like so:
-'xhr.open("POST", 'http://localhost:8080/analyze', true);'
+`xhr.open("POST", 'http://localhost:8080/analyze', true);`
 
 ## NodeJS server
 
-server.js calls the Watson Tone-Analyzer API. This can be run with 'node server.js' 
+server.js calls the Watson Tone-Analyzer API. This can be run with `node server.js` 
 
 ## Development server
 
