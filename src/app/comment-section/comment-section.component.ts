@@ -18,6 +18,7 @@ export class CommentSectionComponent implements OnInit {
   ngAfterViewChecked() {
     componentHandler.upgradeAllRegistered();
   }
+
   analyzeComment(comment: any): void {
     if (!comment.isAnalyzed) {
       var text = comment.snippet.topLevelComment.snippet.textOriginal;
@@ -25,7 +26,7 @@ export class CommentSectionComponent implements OnInit {
       comment.isLoading = true; comment.isLong = false;
       comment.showAnalysis = true;
 
-      this.watson.analyzeCommentPromise(text)
+      this.watson.analyzeContent(text)
         .then(function (data) {
           comment.data = data;
           var analysis = JSON.parse(comment.data);
@@ -34,9 +35,8 @@ export class CommentSectionComponent implements OnInit {
           comment.isLoading = false;
         })
     }
-    else {
+    else
       comment.showAnalysis = !comment.showAnalysis;
-    }
   }
 
 

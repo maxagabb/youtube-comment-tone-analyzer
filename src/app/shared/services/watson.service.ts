@@ -8,30 +8,7 @@ export class WatsonService {
 
   constructor(private http: HttpClient) { }
 
-  analyzeComment(comment) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", '/analyze', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function (e) {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          //console.log(xhr.responseText);
-          return xhr.responseText;
-        } else {
-          //console.log(xhr.statusText);
-          return xhr.statusText;
-        }
-      }
-    };
-    xhr.onerror = function (e) {
-      console.error(xhr.statusText);
-    };
-    xhr.send(JSON.stringify({ "text": comment }));
-  }
-
-  analyzeCommentPromise(comment) {
-    var xhr = new XMLHttpRequest();
-
+  analyzeContent(text) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open("POST", '/analyze', true);
@@ -52,7 +29,7 @@ export class WatsonService {
           statusText: xhr.statusText
         });
       };
-      xhr.send(JSON.stringify({ "text": comment }));
+      xhr.send(JSON.stringify({ "text": text }));
     });
   };
 }
