@@ -109,7 +109,8 @@
 }
 .documentList {
   display: inline-block;
-  padding:1.65rem;
+  padding:0rem;
+  margin-left:1.65rem;
 }
 .h3 {
   padding-left:1rem;
