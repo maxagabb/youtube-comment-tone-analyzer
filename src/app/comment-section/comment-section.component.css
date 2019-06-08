@@ -35,14 +35,17 @@
   word-wrap: break-word;
 }
 
-.author {
+.author_header {
   font-weight: bold;
   margin-bottom: 10px;
+  display: inline-flex;
+}
+.author_name {
+  margin-left: .4rem;
 }
 .commentHeader {
-  white-space: nowrap;
+  display: inline-flex;
 }
-
 .loader {
   position: relative;
 }
@@ -56,7 +59,7 @@
   width:auto;
 }
 .mdl-progress {
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   margin-bottom:.5rem;
   margin-left: 3.5rem;
   width:60vw;

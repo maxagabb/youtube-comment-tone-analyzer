@@ -8,9 +8,9 @@
               <input (change)="analyzeComment(thread)" type="checkbox" id="switch-2" class="mdl-switch__input">
               <span class="mdl-switch__label"></span>
             </label>
-            <span class="author">
-              <i class=""><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
-              {{thread.snippet.topLevelComment.snippet.authorDisplayName}}
+            <span class="author_header">
+              <i><img src={{thread.snippet.topLevelComment.snippet.authorProfileImageUrl}}> </i>
+              <span class="author_name">{{thread.snippet.topLevelComment.snippet.authorDisplayName}}</span>
             </span>
           </div>
           <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" *ngIf="thread.isLoading && thread.showAnalysis"></div>
