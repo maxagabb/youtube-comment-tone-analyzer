@@ -97,14 +97,19 @@
 .documentTone {
   vertical-align:middle;
   display:inline-flex;
+  width:10rem;
 }
 #documentListItem {
-  padding: 0.625rem;
+  padding: 0.5rem;
   display: inline-block;
 }
-.documentList {
+.documentBlock {
   width: 100%;
-  background-color:#edefff;
+  background-color: #edefff;
+}
+.documentList {
+  display: inline-block;
+  padding:1.65rem;
 }
 .h3 {
   padding-left:1rem;
