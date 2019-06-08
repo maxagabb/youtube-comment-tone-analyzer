@@ -62,3 +62,6 @@
   width:60vw;
   max-width:30rem;
 }
+img {
+  border-radius: 50%;
+}
