@@ -20,14 +20,14 @@
         <ng-container *ngFor="let sentence of sentenceTones; let i = index;">
           <tr id="{{i}}" *ngIf="sentence.tone_categories[0] !== undefined" >
               <td data-label="" class="mdl-data-table__cell--non-numeric cellButton">
-                <button (click)="sentence.showSentence = !sentence.showSentence" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                  <i class="material-icons">expand_more</i>
+                <button (click)="sentence.hideSentence = !sentence.hideSentence" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">expand_less</i>
                 </button>
               </td>
-              <td *ngIf="!sentence.showSentence" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
+              <td *ngIf="sentence.hideSentence" data-label="Sentence:" class="mdl-data-table__cell--non-numeric">
                 {{i}}
               </td>
-              <td *ngIf="sentence.showSentence" class="mdl-data-table__cell--non-numeric sentenceCell">
+              <td *ngIf="!sentence.hideSentence" class="mdl-data-table__cell--non-numeric sentenceCell">
                 <span class="sentence">{{sentence.text}}</span>
               </td>
               <ng-container *ngFor="let tone of sentence.tone_categories[0].tones; let i = index;">
