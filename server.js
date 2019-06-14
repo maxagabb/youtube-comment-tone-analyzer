@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('dist/'));
 
+app.get('*', function (req, res) {
+  res.sendfile('./dist/index.html');
+});
 app.post('/analyze', function(req, res, next) {
   const toneParams = {
     tone_input: { 'text': req.body.text },
