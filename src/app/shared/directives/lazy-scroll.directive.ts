@@ -13,9 +13,7 @@ export class LazyScrollDirective {
   @Input('ScrollDistance') scrollTrigger: number;
   @Output() OnScrollMethod = new EventEmitter<any>();
 
-  constructor(
-    public element: ElementRef
-  ) {
+  constructor(public element: ElementRef) {
     this._element = this.element.nativeElement;
     if (!this.scrollTrigger) {
       this.scrollTrigger = 1;

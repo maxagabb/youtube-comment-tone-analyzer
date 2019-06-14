@@ -1,8 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter,OnInit,OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { YoutubeService } from '../shared/services/youtube.service';
-//import { YoutubePlayerService } from '../../shared/services/youtube-player.service';
-//import { PlaylistStoreService } from '../../shared/services/playlist-store.service';
+import { searchAgain } from '../shared/services/scroll.service';
 
 @Component({
   selector: 'app-video-list',
@@ -10,39 +9,59 @@ import { YoutubeService } from '../shared/services/youtube.service';
   styleUrls: ['./video-list.component.css']
 })
 export class VideoListComponent {
-  @Input() videoList;
   @Input() loadingInProgress;
   @Output() commentThreads = new EventEmitter();
+  @Output() searchAgain = new EventEmitter();
+  private pageLoadingFinished = false;
+  subscription;
+  videoList = [];
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private youtubeService: YoutubeService,
-    //private youtubePlayer: YoutubePlayerService,
-    //private playlistService: PlaylistStoreService
   ) { }
 
-  /*play(video: any): void {
-    //this.youtubePlayer.playVideo(video.id, video.snippet.title);
-    this.addToPlaylist(video);
+  ngOnInit() {
+    this.route.data
+      .subscribe(data => {
+        this.videoList = data.videos;
+      });
+    this.subscription = searchAgain.subscribe(data => {
+      this.searchMore();
+    });
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
-  addToPlaylist(video: any): void {
-    this.videoPlaylist.emit(video);
-  }*/
-  emitComments(video: any): void {
-    this.youtubeService.getComments(video.id)
+  goToComments(video: any): void {
+    this.router.navigateByUrl(`/comments/${video.id}`);
+  }
+  searchMore(): void {
+    console.log("searchMore called in videoList");
+    if (this.loadingInProgress || this.pageLoadingFinished || this.videoList.length < 1) {
+      return;
+    }
+    this.loadingInProgress = true;
+
+    this.youtubeService.searchNext()
       .then(data => {
-        if (data.length < 1) {
-          //this.notificationService.showNotification('No matches found.');
+        this.loadingInProgress = false;
+        if (data.length < 1 || data.status === 400) {
+          setTimeout(() => {
+            this.pageLoadingFinished = true;
+            setTimeout(() => {
+              this.pageLoadingFinished = false;
+            }, 10000);
+          })
+          return;
         }
-        this.commentThreads.emit(data);
-        //this.router.navigateByUrl('/comments');
-        //console.log("videoID:", video.id);
-      }).then(() => {
-        //this.router.navigateByUrl('/comments');
+        data.forEach((val) => {
+          this.videoList.push(val);
+        });
+      }).catch(error => {
+        this.loadingInProgress = false;
       })
-
-
-
   }
 }

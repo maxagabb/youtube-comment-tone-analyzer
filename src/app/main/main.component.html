@@ -12,32 +12,22 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <nav class="mdl-navigation">
-        <app-search (videosUpdated)="handleSearchVideo($event)" [loadingInProgress]="loadingInProgress">
+        <app-search [loadingInProgress]="loadingInProgress">
         </app-search>
       </nav>
     </div>
   </header>
+  <div style ="width:100%; padding:.15rem;" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" *ngIf="loading">
+  </div>
 
-
-  <main *ngIf="comments === false" class="mdl-layout__content" LazyScroll (OnScrollMethod)="searchMore()" ScrollDistance="3">
-    <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
-      <app-video-list (commentThreads)="handleComments($event)" *ngIf="videoList.length" class="mdl-grid" [videoList]="videoList" [loadingInProgress]="loadingInProgress">
-      </app-video-list>
-    </div>
-  </main>
-
-
-  <main *ngIf="comments === true" class="mdl-layout__content" LazyScroll (OnScrollMethod)="getMoreComments()" ScrollDistance="3">
-    <div class="page-content" [ngClass]="{'blur-main-playlist-opened': playlistToggle}">
-        <app-comment-section [commentThreads]="commentList" [loadingInProgress]="loadingInProgress">
-        </app-comment-section>
+  <main class="mdl-layout__content" LazyScroll (OnScrollMethod)="searchMore()" ScrollDistance="3">
+    <div class="page-content">
+      <router-outlet></router-outlet>
     </div>
   </main>
 </div>
 
-<div class="loader" *ngIf="!videoList.length && searched === true">
-  <div class="loading"></div>
-</div>
+
 
 
 
