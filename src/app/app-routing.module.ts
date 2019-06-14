@@ -7,12 +7,13 @@ import { VideoListResolverService } from './video-list/video-list-resolver.servi
 import { CommentSectionResolverService } from './comment-section/comment-section-resolver.service';
 
 const routes: Routes = [
-  {path: 'videos/:query', component: VideoListComponent, resolve: {
+  {
+    path: 'videos/:query', runGuardsAndResolvers: "always", component: VideoListComponent, resolve: {
       videos: VideoListResolverService
     }
   },
   {
-    path: 'comments/:videoID', component: CommentSectionComponent, resolve: {
+    path: 'comments/:videoID', runGuardsAndResolvers: "always", component: CommentSectionComponent, resolve: {
       comments: CommentSectionResolverService
     }
   }
