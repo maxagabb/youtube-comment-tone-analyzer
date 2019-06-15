@@ -20,14 +20,14 @@ export class MainComponent {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
-          console.log(event);
+          //console.log(event);
           this.loading = true;
           break;
         }
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          console.log(event);
+          //console.log(event);
           this.loading = false;
           break;
         }
