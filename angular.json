@@ -19,7 +19,7 @@
             "assets": [ "src/assets", "src/favicon.ico" ],
             "styles": [
               "src/styles.css",
-              "node_modules/material-design-lite/dist/material.min.css"
+              "node_modules/material-design-lite/dist/material.red-blue.min.css"
             ],
             "scripts": [ "node_modules/material-design-lite/material.min.js" ]
           },

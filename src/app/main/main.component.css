@@ -12,6 +12,7 @@
 
 .mdl-layout__header {
   height: 64px;
+  background-color: #3f51b5;
 }
 
 .mdl-layout__content {
