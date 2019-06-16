@@ -12,9 +12,6 @@ export class MainComponent {
   //clean this up
   loading = false;
   public loadingInProgress = false;
-  public searched = false;
-  private pageLoadingFinished = false;
-  public playlistElement: any;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
