@@ -67,7 +67,6 @@ export class CommentSectionComponent implements OnInit {
     return false;
   }
   searchMore(): void {
-    console.log('searchMore called in comment section');
     if (this.loadingInProgress || this.pageLoadingFinished || this.commentThreads.length < 1) {
       return;
     }

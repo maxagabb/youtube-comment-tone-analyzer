@@ -29,8 +29,8 @@ export class SearchComponent {
       (this.searchForm.value.query.trim().length === 0)) {
       return;
     }
-    
-    this.last_search = this.searchForm.value.query;
+
+    this.last_search = encodeURIComponent(this.searchForm.value.query);
     this.router.navigateByUrl(`/videos/${this.last_search}`);
 
   }

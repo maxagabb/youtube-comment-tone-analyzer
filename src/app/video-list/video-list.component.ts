@@ -39,7 +39,6 @@ export class VideoListComponent {
     this.router.navigateByUrl(`/comments/${video.id}`);
   }
   searchMore(): void {
-    console.log("searchMore called in videoList");
     if (this.loadingInProgress || this.pageLoadingFinished || this.videoList.length < 1) {
       return;
     }

@@ -10,8 +10,7 @@ export class VideoListResolverService implements Resolve<Object>{
 
   constructor(private youtube: YoutubeService, private router: Router) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Object> | Promise<never> {
-    let query = route.paramMap.get('query');
-
+    let query = decodeURIComponent(route.paramMap.get('query'));
     return this.youtube.searchVideos(query)
       .then(data => {
         if (data.length < 1) {
