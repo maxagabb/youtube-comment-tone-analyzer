@@ -8,7 +8,7 @@ import { CommentSectionResolverService } from './comment-section/comment-section
 
 const routes: Routes = [
   {
-    path: 'videos/:query', runGuardsAndResolvers: "always", component: VideoListComponent, resolve: {
+    path: 'videos', runGuardsAndResolvers: "always", component: VideoListComponent, resolve: {
       videos: VideoListResolverService
     }
   },
