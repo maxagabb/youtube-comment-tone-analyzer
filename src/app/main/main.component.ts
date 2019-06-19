@@ -9,7 +9,6 @@ declare var componentHandler: any;
 })
 
 export class MainComponent {
-  //clean this up
   loading = false;
   public loadingInProgress = false;
 

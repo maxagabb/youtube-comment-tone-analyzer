@@ -25,7 +25,6 @@ export class YoutubeService {
     return this.http.get(url);
   }
 
-
   getComments(id): Promise<any> {
     const url = `${this.baseUrl}commentThreads?part=snippet&order=relevance&videoId=${id}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
     return this.http.get(url)
@@ -35,7 +34,8 @@ export class YoutubeService {
         this.lastID = id;
         this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
         return results['items'];
-      });
+      })
+      .catch((error) => { return error });
   }
   getMoreComments(): Promise<any> {
     const url = `${this.baseUrl}commentThreads?part=snippet&order=relevance&pageToken=${this.nextToken}&videoId=${this.lastID}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
@@ -47,17 +47,14 @@ export class YoutubeService {
         this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
         return jsonRes['items'];
       })
-    //.toPromise()
-    //.catch(this.handleError)
+      .catch((error) => { return error })
   }
 
   getVideos(ids): Promise<any> {
     const url = `${this.baseUrl}videos?id=${ids.join(',')}&maxResults=${this.maxResults}&type=video&part=snippet,contentDetails,statistics&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
     return this.http.get(url)
       .toPromise()
-      //output: 'First Example'
       .then(results => {
-        //console.log('From Promise:', results);
         return results['items'];
       });
   }
@@ -80,12 +77,9 @@ export class YoutubeService {
         });
 
         videos = this.getVideos(ids);
-        //console.log('After object Conversion',videos);
         return videos;
       })
-    
-    //.toPromise()
-    //.catch(this.handleError)
+      .catch((error) => { return error })
   }
 
   searchNext(): Promise<any> {
@@ -105,7 +99,6 @@ export class YoutubeService {
 
         return this.getVideos(ids);
       })
-      //.toPromise()
-      //.catch(this.handleError)
+      .catch((error) => { return error })
   }
 }
