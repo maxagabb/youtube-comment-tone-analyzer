@@ -35,7 +35,7 @@ export class YoutubeService {
         this.nextToken = jsonRes['nextPageToken'] ? jsonRes['nextPageToken'] : undefined;
         return results['items'];
       })
-      .catch((error) => { return error });
+      //.catch((error) => { return error });
   }
   getMoreComments(): Promise<any> {
     const url = `${this.baseUrl}commentThreads?part=snippet&order=relevance&pageToken=${this.nextToken}&videoId=${this.lastID}&key=${this.YOUTUBE_API_KEY}`; // tslint:disable-line
